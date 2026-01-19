@@ -1,4 +1,4 @@
-# Nutričná kalkulačka 🍽️
+# Nutričná kalkulačka 📱
 
 ## Popis projektu
 Nutričná kalkulačka je konzolová Java aplikácia, ktorá umožňuje používateľovi:
