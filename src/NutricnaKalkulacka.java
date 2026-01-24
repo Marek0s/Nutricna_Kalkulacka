@@ -1,6 +1,10 @@
 public class NutricnaKalkulacka {
 
     public static double idealneKalorie(Osoba osoba) {
+        if (osoba == null) {
+            throw new IllegalArgumentException("Osoba nesmie byť null.");
+        }
+
         double zaklad;
 
         if (osoba.getPohlavie().equals("muz")) {
@@ -18,6 +22,14 @@ public class NutricnaKalkulacka {
     }
 
     public static String ohodnotJedalnicek(Jedalnicek jedalnicek, Osoba osoba) {
+        if (jedalnicek == null || osoba == null) {
+            throw new IllegalArgumentException("Jedálniček ani osoba nesmú byť null.");
+        }
+
+        if (jedalnicek.getJedla().isEmpty()) {
+            return "Jedálniček je prázdny.";
+        }
+
         double prijem = jedalnicek.getSpoluKalorie();
         double ideal = idealneKalorie(osoba);
 

@@ -9,6 +9,9 @@ public class Jedalnicek {
     }
 
     public void pridajJedlo(Jedlo jedlo) {
+        if (jedlo == null) {
+            throw new IllegalArgumentException("Jedlo nesmie byť null.");
+        }
         jedla.add(jedlo);
     }
 
@@ -21,14 +24,17 @@ public class Jedalnicek {
     }
 
     public double getSpoluBielkoviny() {
+        if (jedla.isEmpty()) return 0;
         return jedla.stream().mapToDouble(Jedlo::getBielkoviny).sum();
     }
 
     public double getSpoluTuky() {
+        if (jedla.isEmpty()) return 0;
         return jedla.stream().mapToDouble(Jedlo::getTuky).sum();
     }
 
     public double getSpoluSacharidy() {
+        if (jedla.isEmpty()) return 0;
         return jedla.stream().mapToDouble(Jedlo::getUhlovodraty).sum();
     }
 }
