@@ -38,9 +38,13 @@ public class Main {
 
                 case 2:
                     System.out.print("Zadaj index jedla: ");
-                    int index = sc.nextInt();
-                    jedalnicek.pridajJedlo(katalog.getJedloPodlaIndexu(index));
-                    System.out.println("Jedlo pridané.");
+                    try {
+                        int index = sc.nextInt();
+                        jedalnicek.pridajJedlo(katalog.getJedloPodlaIndexu(index));
+                        System.out.println("Jedlo pridané.");
+                    } catch (Exception e) {
+                        System.out.println("Chyba: " + e.getMessage());
+                    }
                     break;
 
                 case 3:
