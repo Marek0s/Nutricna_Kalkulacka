@@ -1,6 +1,44 @@
 public class NutricnaKalkulacka {
 
-    public NutricnaKalkulacka() {
+    public static double idealneKalorie(Osoba osoba) {
+        if (osoba == null) {
+            throw new IllegalArgumentException("Osoba nesmie byť null.");
+        }
 
+        double zaklad;
+
+        if (osoba.getPohlavie().equals("muz")) {
+            zaklad = 2500;
+        } else {
+            zaklad = 2000;
+        }
+
+        switch (osoba.getUrovenAktivity()) {
+            case "nizka": return zaklad * 0.9;
+            case "stredna": return zaklad;
+            case "vysoka": return zaklad * 1.2;
+            default: return zaklad;
+        }
+    }
+
+    public static String ohodnotJedalnicek(Jedalnicek jedalnicek, Osoba osoba) {
+        if (jedalnicek == null || osoba == null) {
+            throw new IllegalArgumentException("Jedálniček ani osoba nesmú byť null.");
+        }
+
+        if (jedalnicek.getJedla().isEmpty()) {
+            return "Jedálniček je prázdny.";
+        }
+
+        double prijem = jedalnicek.getSpoluKalorie();
+        double ideal = idealneKalorie(osoba);
+
+        if (prijem < ideal * 0.9) {
+            return "Nedostatočný kalorický príjem";
+        } else if (prijem <= ideal * 1.1) {
+            return "Vyhovujúci jedálniček";
+        } else {
+            return "Nadmerný kalorický príjem";
+        }
     }
 }
