@@ -18,6 +18,9 @@ public class KatalogJedal {
     }
 
     public Jedlo getJedloPodlaIndexu(int index) {
+        if (index < 0 || index >= jedla.size()) {
+            throw new IllegalArgumentException("Neplatný index jedla.");
+        }
         return jedla.get(index);
     }
 }
