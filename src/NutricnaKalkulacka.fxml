@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="MainController"
+            prefWidth="850"
+            prefHeight="620">
+
+    <!-- HORE - udaje o osobe -->
+    <top>
+        <VBox spacing="5">
+            <padding><Insets top="10" right="10" bottom="10" left="10"/></padding>
+
+            <Label text="Nutricna kalkulacka" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Label text="Pohlavie:"/>
+                <ComboBox fx:id="cbPohlavie" prefWidth="100"/>
+
+                <Label text="Vek:"/>
+                <TextField fx:id="tfVek" prefWidth="60"/>
+
+                <Label text="Aktivita:"/>
+                <ComboBox fx:id="cbAktivita" prefWidth="120"/>
+
+                <Button text="Potvrdit" onAction="#onPotvrdit"/>
+
+                <Label fx:id="lblOsobaInfo"/>
+            </HBox>
+
+            <Separator/>
+        </VBox>
+    </top>
+
+    <!-- STRED - katalog a jedalnicek -->
+    <center>
+        <HBox spacing="10">
+            <padding><Insets top="5" right="10" bottom="5" left="10"/></padding>
+
+            <!-- Lava strana - katalog -->
+            <VBox spacing="5" HBox.hgrow="ALWAYS">
+                <Label text="Katalog jedal:" style="-fx-font-weight: bold;"/>
+
+                <TableView fx:id="tvKatalog" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="colNazov" text="Nazov" prefWidth="160"/>
+                        <TableColumn fx:id="colKcal"  text="kcal"  prefWidth="55"/>
+                        <TableColumn fx:id="colB"     text="B(g)"  prefWidth="55"/>
+                        <TableColumn fx:id="colT"     text="T(g)"  prefWidth="55"/>
+                        <TableColumn fx:id="colS"     text="S(g)"  prefWidth="55"/>
+                    </columns>
+                </TableView>
+
+                <Button fx:id="btnPridat"
+                        text="Pridat do jedalnicka"
+                        onAction="#onPridat"
+                        maxWidth="Infinity"/>
+            </VBox>
+
+            <Separator orientation="VERTICAL"/>
+
+            <!-- Prava strana - jedalnicek -->
+            <VBox spacing="5" HBox.hgrow="ALWAYS">
+                <Label text="Moj jedalnicek:" style="-fx-font-weight: bold;"/>
+
+                <ListView fx:id="lvJedalnicek" VBox.vgrow="ALWAYS"/>
+
+                <Button text="Odstranit vybrane"
+                        onAction="#onOdstranit"
+                        maxWidth="Infinity"/>
+
+                <Separator/>
+
+                <!-- Suhrn -->
+                <Label text="Denny prijem:" style="-fx-font-weight: bold;"/>
+
+                <GridPane hgap="10" vgap="4">
+                    <Label text="Kalorie:"    GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                    <Label fx:id="lblKcal"    GridPane.columnIndex="1" GridPane.rowIndex="0" text="0 kcal"/>
+
+                    <Label text="Bielkoviny:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                    <Label fx:id="lblBielkoviny" GridPane.columnIndex="1" GridPane.rowIndex="1" text="0 g"/>
+
+                    <Label text="Tuky:"       GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                    <Label fx:id="lblTuky"    GridPane.columnIndex="1" GridPane.rowIndex="2" text="0 g"/>
+
+                    <Label text="Sacharidy:"  GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+                    <Label fx:id="lblSacharidy" GridPane.columnIndex="1" GridPane.rowIndex="3" text="0 g"/>
+                </GridPane>
+
+                <Separator/>
+
+                <Button fx:id="btnHodnotit"
+                        text="Ohodnotit jedalnicek"
+                        onAction="#onHodnotit"
+                        maxWidth="Infinity"/>
+            </VBox>
+        </HBox>
+    </center>
+
+    <!-- DOLE - hodnotenie -->
+    <bottom>
+        <VBox spacing="5">
+            <padding><Insets top="5" right="10" bottom="10" left="10"/></padding>
+            <Separator/>
+            <Label text="Hodnotenie:"/>
+            <TextArea fx:id="taHodnotenie"
+                      editable="false"
+                      prefHeight="100"
+                      wrapText="true"
+                      promptText="Tu sa zobrazi hodnotenie jedálnička..."/>
+        </VBox>
+    </bottom>
+
+</BorderPane>
