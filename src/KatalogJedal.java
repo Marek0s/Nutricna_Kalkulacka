@@ -4,7 +4,7 @@ import java.util.List;
 public class KatalogJedal {
     private List<Jedlo> jedla = new ArrayList<>();
 
-    public KatalogJedal() {
+    public  KatalogJedal() {
         jedla.add(new Jedlo("Kuracie prsia", 165, 31, 3.6, 0));
         jedla.add(new Jedlo("Hovädzie mäso chudé", 250, 26, 17, 0));
         jedla.add(new Jedlo("Losos pečený", 206, 22, 13, 0));
