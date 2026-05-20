@@ -1,13 +1,20 @@
+package model;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Jedalnicek {
-    private List<Jedlo> jedla = new ArrayList<>();
+    private final List<Jedlo> jedla = new ArrayList<>();
 
     public void pridajJedlo(Jedlo jedlo) {
-        if (jedlo == null)
+        if (jedlo == null) {
             throw new IllegalArgumentException("Jedlo nesmie byť null.");
+        }
         jedla.add(jedlo);
+    }
+
+    public void odstranJedlo(Jedlo jedlo) {
+        jedla.remove(jedlo);
     }
 
     public List<Jedlo> getJedla() {

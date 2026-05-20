@@ -1,23 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.geometry.*?>
 
 <BorderPane xmlns="http://javafx.com/javafx/17"
             xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="MainController"
+            fx:controller="controller.MainController"
             prefWidth="850"
             prefHeight="620"
             styleClass="app-root"
             stylesheets="@style.css">
 
-    <!-- HORE - udaje o osobe -->
     <top>
         <VBox spacing="10" styleClass="header-section">
             <padding><Insets top="10" right="10" bottom="10" left="10"/></padding>
 
-            <Label text="Nutricna kalkulacka" styleClass="app-title"/>
+            <Label text="Nutričná kalkulačka" styleClass="app-title"/>
 
             <HBox spacing="10" alignment="CENTER_LEFT">
                 <Label text="Pohlavie:"/>
@@ -29,7 +28,7 @@
                 <Label text="Aktivita:"/>
                 <ComboBox fx:id="cbAktivita" prefWidth="120"/>
 
-                <Button text="Potvrdit" onAction="#onPotvrdit" styleClass="primary-button"/>
+                <Button text="Potvrdiť" onAction="#onPotvrdit" styleClass="primary-button"/>
 
                 <Label fx:id="lblOsobaInfo" styleClass="info-label"/>
             </HBox>
@@ -38,18 +37,16 @@
         </VBox>
     </top>
 
-    <!-- STRED - katalog a jedalnicek -->
     <center>
         <HBox spacing="12" styleClass="content-section">
             <padding><Insets top="5" right="10" bottom="5" left="10"/></padding>
 
-            <!-- Lava strana - katalog -->
             <VBox spacing="8" HBox.hgrow="ALWAYS" styleClass="panel">
-                <Label text="Katalog jedal:" styleClass="section-title"/>
+                <Label text="Katalóg jedál:" styleClass="section-title"/>
 
                 <TableView fx:id="tvKatalog" VBox.vgrow="ALWAYS">
                     <columns>
-                        <TableColumn fx:id="colNazov" text="Nazov" prefWidth="160"/>
+                        <TableColumn fx:id="colNazov" text="Názov" prefWidth="160"/>
                         <TableColumn fx:id="colKcal"  text="kcal"  prefWidth="55"/>
                         <TableColumn fx:id="colB"     text="B(g)"  prefWidth="55"/>
                         <TableColumn fx:id="colT"     text="T(g)"  prefWidth="55"/>
@@ -58,7 +55,7 @@
                 </TableView>
 
                 <Button fx:id="btnPridat"
-                        text="Pridat do jedalnicka"
+                        text="Pridať do jedálnička"
                         onAction="#onPridat"
                         maxWidth="Infinity"
                         styleClass="primary-button"/>
@@ -66,40 +63,38 @@
 
             <Separator orientation="VERTICAL"/>
 
-            <!-- Prava strana - jedalnicek -->
             <VBox spacing="8" HBox.hgrow="ALWAYS" styleClass="panel">
-                <Label text="Moj jedalnicek:" styleClass="section-title"/>
+                <Label text="Môj jedálniček:" styleClass="section-title"/>
 
                 <ListView fx:id="lvJedalnicek" VBox.vgrow="ALWAYS"/>
 
-                <Button text="Odstranit vybrane"
+                <Button text="Odstrániť vybrané"
                         onAction="#onOdstranit"
                         maxWidth="Infinity"
                         styleClass="secondary-button"/>
 
                 <Separator/>
 
-                <!-- Suhrn -->
-                <Label text="Denny prijem:" styleClass="section-title"/>
+                <Label text="Denný príjem:" styleClass="section-title"/>
 
                 <GridPane hgap="10" vgap="6" styleClass="summary-grid">
-                    <Label text="Kalorie:"    GridPane.columnIndex="0" GridPane.rowIndex="0"/>
-                    <Label fx:id="lblKcal"    GridPane.columnIndex="1" GridPane.rowIndex="0" text="0 kcal" styleClass="summary-value"/>
+                    <Label text="Kalórie:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                    <Label fx:id="lblKcal" GridPane.columnIndex="1" GridPane.rowIndex="0" text="0 kcal" styleClass="summary-value"/>
 
                     <Label text="Bielkoviny:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
                     <Label fx:id="lblBielkoviny" GridPane.columnIndex="1" GridPane.rowIndex="1" text="0 g" styleClass="summary-value"/>
 
-                    <Label text="Tuky:"       GridPane.columnIndex="0" GridPane.rowIndex="2"/>
-                    <Label fx:id="lblTuky"    GridPane.columnIndex="1" GridPane.rowIndex="2" text="0 g" styleClass="summary-value"/>
+                    <Label text="Tuky:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                    <Label fx:id="lblTuky" GridPane.columnIndex="1" GridPane.rowIndex="2" text="0 g" styleClass="summary-value"/>
 
-                    <Label text="Sacharidy:"  GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+                    <Label text="Sacharidy:" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
                     <Label fx:id="lblSacharidy" GridPane.columnIndex="1" GridPane.rowIndex="3" text="0 g" styleClass="summary-value"/>
                 </GridPane>
 
                 <Separator/>
 
                 <Button fx:id="btnHodnotit"
-                        text="Ohodnotit jedalnicek"
+                        text="Ohodnotiť jedálniček"
                         onAction="#onHodnotit"
                         maxWidth="Infinity"
                         styleClass="primary-button"/>
@@ -107,7 +102,6 @@
         </HBox>
     </center>
 
-    <!-- DOLE - hodnotenie -->
     <bottom>
         <VBox spacing="8" styleClass="footer-section">
             <padding><Insets top="5" right="10" bottom="10" left="10"/></padding>
@@ -117,7 +111,7 @@
                       editable="false"
                       prefHeight="100"
                       wrapText="true"
-                      promptText="Tu sa zobrazi hodnotenie jedálnička..."/>
+                      promptText="Tu sa zobrazí hodnotenie jedálnička..."/>
         </VBox>
     </bottom>
 

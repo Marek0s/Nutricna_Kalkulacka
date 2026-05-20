@@ -1,10 +1,12 @@
+package model;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class KatalogJedal {
-    private List<Jedlo> jedla = new ArrayList<>();
+    private final List<Jedlo> jedla = new ArrayList<>();
 
-    public  KatalogJedal() {
+    public KatalogJedal() {
         jedla.add(new Jedlo("Kuracie prsia", 165, 31, 3.6, 0));
         jedla.add(new Jedlo("Hovädzie mäso chudé", 250, 26, 17, 0));
         jedla.add(new Jedlo("Losos pečený", 206, 22, 13, 0));
@@ -25,8 +27,9 @@ public class KatalogJedal {
     }
 
     public Jedlo getJedloPodlaIndexu(int index) {
-        if (index < 0 || index >= jedla.size())
+        if (index < 0 || index >= jedla.size()) {
             throw new IllegalArgumentException("Neplatný index jedla.");
+        }
         return jedla.get(index);
     }
 }
