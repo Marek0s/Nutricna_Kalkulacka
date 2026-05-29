@@ -1,6 +1,6 @@
 # 🍽️ Nutričná kalkulačka
 
-> Konzolová Java aplikácia na zostavovanie denného jedálnička s výpočtom kalórií a makronutrientov.
+> Java aplikácia na zostavovanie denného jedálnička s výpočtom kalórií a makronutrientov.
 
 **Školský tímový projekt – Objektové programovanie | 2. skupina – 3.SB**
 
