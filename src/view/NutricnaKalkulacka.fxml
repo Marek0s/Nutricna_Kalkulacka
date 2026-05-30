@@ -7,109 +7,142 @@
 <BorderPane xmlns="http://javafx.com/javafx/17"
             xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="controller.MainController"
-            prefWidth="850"
-            prefHeight="620"
+            prefWidth="900"
+            prefHeight="640"
             styleClass="app-root"
             stylesheets="@style.css">
 
+    <!-- ===== HEADER ===== -->
     <top>
-        <VBox spacing="10" styleClass="header-section">
-            <padding><Insets top="10" right="10" bottom="10" left="10"/></padding>
+        <VBox styleClass="header-section" spacing="10">
+            <padding><Insets top="14" right="20" bottom="14" left="20"/></padding>
 
-            <Label text="Nutričná kalkulačka" styleClass="app-title"/>
+            <Label text="🥗  Nutričná kalkulačka" styleClass="app-title"/>
 
-            <HBox spacing="10" alignment="CENTER_LEFT">
-                <Label text="Pohlavie:"/>
-                <ComboBox fx:id="cbPohlavie" prefWidth="100"/>
+            <HBox spacing="14" alignment="CENTER_LEFT">
+                <Label text="Pohlavie:" style="-fx-font-size:12px;"/>
+                <ComboBox fx:id="cbPohlavie" prefWidth="90" style="-fx-font-size:12px;"/>
 
-                <Label text="Vek:"/>
-                <TextField fx:id="tfVek" prefWidth="60"/>
+                <Label text="Vek:" style="-fx-font-size:12px;"/>
+                <TextField fx:id="tfVek" prefWidth="56" style="-fx-font-size:12px;"/>
 
-                <Label text="Aktivita:"/>
-                <ComboBox fx:id="cbAktivita" prefWidth="120"/>
+                <Label text="Aktivita:" style="-fx-font-size:12px;"/>
+                <ComboBox fx:id="cbAktivita" prefWidth="110" style="-fx-font-size:12px;"/>
 
-                <Button text="Potvrdiť" onAction="#onPotvrdit" styleClass="primary-button"/>
+                <Button text="✓  Potvrdiť"
+                        onAction="#onPotvrdit"
+                        styleClass="primary-button"/>
 
                 <Label fx:id="lblOsobaInfo" styleClass="info-label"/>
             </HBox>
-
-            <Separator/>
         </VBox>
     </top>
 
+    <!-- ===== MAIN CONTENT ===== -->
     <center>
-        <HBox spacing="12" styleClass="content-section">
-            <padding><Insets top="5" right="10" bottom="5" left="10"/></padding>
+        <HBox styleClass="content-section" HBox.hgrow="ALWAYS">
 
-            <VBox spacing="8" HBox.hgrow="ALWAYS" styleClass="panel">
-                <Label text="Katalóg jedál:" styleClass="section-title"/>
+            <!-- LEFT PANEL: Katalóg jedál -->
+            <VBox spacing="10" styleClass="panel" HBox.hgrow="ALWAYS">
+                <padding><Insets top="16" right="16" bottom="16" left="16"/></padding>
+
+                <Label text="KATALÓG JEDÁL" styleClass="section-title"/>
 
                 <TableView fx:id="tvKatalog" VBox.vgrow="ALWAYS">
                     <columns>
-                        <TableColumn fx:id="colNazov" text="Názov" prefWidth="160"/>
-                        <TableColumn fx:id="colKcal"  text="kcal"  prefWidth="55"/>
-                        <TableColumn fx:id="colB"     text="B(g)"  prefWidth="55"/>
-                        <TableColumn fx:id="colT"     text="T(g)"  prefWidth="55"/>
-                        <TableColumn fx:id="colS"     text="S(g)"  prefWidth="55"/>
+                        <TableColumn fx:id="colNazov" text="Názov"   prefWidth="165"/>
+                        <TableColumn fx:id="colKcal"  text="kcal"    prefWidth="52"/>
+                        <TableColumn fx:id="colB"     text="B (g)"   prefWidth="52"/>
+                        <TableColumn fx:id="colT"     text="T (g)"   prefWidth="52"/>
+                        <TableColumn fx:id="colS"     text="S (g)"   prefWidth="52"/>
                     </columns>
                 </TableView>
 
                 <Button fx:id="btnPridat"
-                        text="Pridať do jedálnička"
+                        text="+ Pridať do jedálnička"
                         onAction="#onPridat"
                         maxWidth="Infinity"
                         styleClass="primary-button"/>
             </VBox>
 
-            <Separator orientation="VERTICAL"/>
+            <Separator orientation="VERTICAL" style="-fx-padding:0;"/>
 
-            <VBox spacing="8" HBox.hgrow="ALWAYS" styleClass="panel">
-                <Label text="Môj jedálniček:" styleClass="section-title"/>
+            <!-- RIGHT PANEL: Jedálniček + Príjem + Hodnotenie -->
+            <VBox spacing="10" styleClass="panel-right" HBox.hgrow="ALWAYS">
+                <padding><Insets top="16" right="16" bottom="16" left="16"/></padding>
+
+                <Label text="MÔJ JEDÁLNIČEK" styleClass="section-title"/>
 
                 <ListView fx:id="lvJedalnicek" VBox.vgrow="ALWAYS"/>
 
-                <Button text="Odstrániť vybrané"
+                <Button text="🗑  Odstrániť vybrané"
                         onAction="#onOdstranit"
                         maxWidth="Infinity"
                         styleClass="secondary-button"/>
 
                 <Separator/>
 
-                <Label text="Denný príjem:" styleClass="section-title"/>
+                <Label text="DENNÝ PRÍJEM" styleClass="section-title"/>
 
-                <GridPane hgap="10" vgap="6" styleClass="summary-grid">
-                    <Label text="Kalórie:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
-                    <Label fx:id="lblKcal" GridPane.columnIndex="1" GridPane.rowIndex="0" text="0 kcal" styleClass="summary-value"/>
+                <GridPane styleClass="summary-grid" hgap="12" vgap="7">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="ALWAYS"/>
+                        <ColumnConstraints hgrow="ALWAYS"/>
+                        <ColumnConstraints hgrow="ALWAYS"/>
+                        <ColumnConstraints hgrow="ALWAYS"/>
+                    </columnConstraints>
 
-                    <Label text="Bielkoviny:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
-                    <Label fx:id="lblBielkoviny" GridPane.columnIndex="1" GridPane.rowIndex="1" text="0 g" styleClass="summary-value"/>
+                    <!-- Row 0: labels -->
+                    <Label text="Kalórie"
+                           GridPane.columnIndex="0" GridPane.rowIndex="0"
+                           style="-fx-font-size:11px; -fx-text-fill:#4a7a58;"/>
+                    <Label text="Bielkoviny"
+                           GridPane.columnIndex="1" GridPane.rowIndex="0"
+                           style="-fx-font-size:11px; -fx-text-fill:#4a7a58;"/>
+                    <Label text="Tuky"
+                           GridPane.columnIndex="2" GridPane.rowIndex="0"
+                           style="-fx-font-size:11px; -fx-text-fill:#4a7a58;"/>
+                    <Label text="Sacharidy"
+                           GridPane.columnIndex="3" GridPane.rowIndex="0"
+                           style="-fx-font-size:11px; -fx-text-fill:#4a7a58;"/>
 
-                    <Label text="Tuky:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
-                    <Label fx:id="lblTuky" GridPane.columnIndex="1" GridPane.rowIndex="2" text="0 g" styleClass="summary-value"/>
-
-                    <Label text="Sacharidy:" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
-                    <Label fx:id="lblSacharidy" GridPane.columnIndex="1" GridPane.rowIndex="3" text="0 g" styleClass="summary-value"/>
+                    <!-- Row 1: values -->
+                    <Label fx:id="lblKcal"
+                           text="0 kcal"
+                           GridPane.columnIndex="0" GridPane.rowIndex="1"
+                           styleClass="summary-value"/>
+                    <Label fx:id="lblBielkoviny"
+                           text="0 g"
+                           GridPane.columnIndex="1" GridPane.rowIndex="1"
+                           styleClass="summary-value"/>
+                    <Label fx:id="lblTuky"
+                           text="0 g"
+                           GridPane.columnIndex="2" GridPane.rowIndex="1"
+                           styleClass="summary-value"/>
+                    <Label fx:id="lblSacharidy"
+                           text="0 g"
+                           GridPane.columnIndex="3" GridPane.rowIndex="1"
+                           styleClass="summary-value"/>
                 </GridPane>
 
-                <Separator/>
-
                 <Button fx:id="btnHodnotit"
-                        text="Ohodnotiť jedálniček"
+                        text="★  Ohodnotiť jedálniček"
                         onAction="#onHodnotit"
                         maxWidth="Infinity"
                         styleClass="primary-button"/>
             </VBox>
+
         </HBox>
     </center>
 
+    <!-- ===== FOOTER ===== -->
     <bottom>
         <VBox spacing="8" styleClass="footer-section">
-            <padding><Insets top="5" right="10" bottom="10" left="10"/></padding>
-            <Separator/>
-            <Label text="Hodnotenie:" styleClass="section-title"/>
+            <padding><Insets top="12" right="20" bottom="14" left="20"/></padding>
+            <Label text="HODNOTENIE" styleClass="section-title"/>
             <TextArea fx:id="taHodnotenie"
                       editable="false"
-                      prefHeight="100"
+                      prefHeight="80"
                       wrapText="true"
                       promptText="Tu sa zobrazí hodnotenie jedálnička..."/>
         </VBox>
