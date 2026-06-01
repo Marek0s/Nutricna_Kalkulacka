@@ -101,19 +101,4 @@ Jedálniček je vyhodnotený porovnaním skutočného a ideálneho kalorického 
 
 ## Flowchart
 
-```mermaid
-flowchart TD
-    A[Začiatok] --> B{Zadané údaje o osobe?}
-    B -->|Nie| C[Chyba vstupu]
-    B -->|Áno| D{Jedálniček prázdny?}
-    D -->|Áno| E[Jedálniček je prázdny]
-    D -->|Nie| F[Vypočítať prijaté kalórie]
-    F --> G[Vypočítať ideálne kalórie]
-    G --> H{Porovnanie}
-    H -->|< 90 %| I[⚠️ Nedostatočný príjem]
-    H -->|90–110 %| J[✅ Vyhovujúci jedálniček]
-    H -->|> 110 %| K[⚠️ Nadmerný príjem]
-    I --> L[Koniec]
-    J --> L
-    K --> L
-```
+![Flowchart](Flowchart.png)
